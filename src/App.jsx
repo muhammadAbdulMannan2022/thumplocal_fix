@@ -23,6 +23,9 @@ import ServicesPageLayout from "./components/dashboard/ServicesPage/ServicesPage
 import ServicesPage from "./components/dashboard/ServicesPage/ServicesPage";
 import WebBuilderLayout from "./components/dashboard/WebBuilder/WebBuilderLayout";
 import { PosterDesigner } from "./components/dashboard/Poster/Poster_design";
+import ListingLayout from "./components/dashboard/Listing/ListingLayout";
+import { BusinessInfoForm } from "./components/dashboard/Listing/pages/basicInfo/BasicInfoMain";
+import { BusinessForm } from "./components/dashboard/Listing/pages/BusinessTime/BusinessTimeForm";
 
 function App() {
   return (
@@ -55,6 +58,10 @@ function App() {
 
             {/* other route */}
             <Route path="poster" element={<PosterDesigner />} />
+            <Route path="listing" element={<ListingLayout />}>
+              <Route index element={<BusinessInfoForm />} />
+              <Route path="time" element={<BusinessForm />} />
+            </Route>
           </Route>
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
