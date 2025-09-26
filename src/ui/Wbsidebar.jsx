@@ -57,7 +57,10 @@ const Wbsidebar = ({ children }) => {
       label: "SEO Service",
       Icon: Search,
       to: "/dashboard/web-solution/seo",
-      active: ["/dashboard/web-solution/seo"],
+      active: [
+        "/dashboard/web-solution/seo",
+        "/dashboard/web-solution/seo/exWeb",
+      ],
     },
     {
       label: "Service pages",

@@ -22,6 +22,7 @@ import OldW from "./components/dashboard/WebSolution/OldW";
 import ServicesPageLayout from "./components/dashboard/ServicesPage/ServicesPageLayout";
 import ServicesPage from "./components/dashboard/ServicesPage/ServicesPage";
 import WebBuilderLayout from "./components/dashboard/WebBuilder/WebBuilderLayout";
+import { PosterDesigner } from "./components/dashboard/Poster/Poster_design";
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
               element={<ServicesPageLayout />}
             ></Route>
             <Route path="web-builder" element={<WebBuilderLayout />}></Route>
+
+            {/* other route */}
+            <Route path="poster" element={<PosterDesigner />} />
           </Route>
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
