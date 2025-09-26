@@ -11,9 +11,9 @@ import {
   LogOut,
 } from "lucide-react";
 
-const SidebarItem = ({ to, Icon, label }) => {
+const SidebarItem = ({ to, Icon, label, actives }) => {
   const { pathname } = useLocation();
-  const active = pathname === to;
+  const active = actives.includes(pathname);
   return (
     <Link
       to={to}
@@ -38,21 +38,61 @@ const SidebarItem = ({ to, Icon, label }) => {
 
 const Sidebar = () => {
   const links = [
-    { to: "/dashboard/web-solution", label: "Web Solution", Icon: Globe },
-    { to: "/dashboard/poster", label: "Poster", Icon: Image },
-    { to: "/dashboard/listing", label: "Listing", Icon: List },
-    { to: "/dashboard/reviews", label: "Reviews", Icon: Star },
-    { to: "/dashboard/ads", label: "Ads Campaign", Icon: Megaphone },
-    { to: "/dashboard/profile", label: "Profile", Icon: User },
-    { to: "/logout", label: "Logout", Icon: LogOut },
+    {
+      to: "/dashboard/web-solution/seo",
+      label: "Web Solution",
+      Icon: Globe,
+      actives: [
+        "/dashboard/web-solution/seo",
+        "/dashboard/web-solution/seo/exWeb",
+        "/dashboard/web-solution-sp",
+      ],
+    },
+    {
+      to: "/dashboard/poster",
+      label: "Poster",
+      Icon: Image,
+      actives: ["/dashboard/poster"],
+    },
+    {
+      to: "/dashboard/listing",
+      label: "Listing",
+      Icon: List,
+      actives: ["/dashboard/listing"],
+    },
+    {
+      to: "/dashboard/reviews",
+      label: "Reviews",
+      Icon: Star,
+      actives: ["/dashboard/reviews"],
+    },
+    {
+      to: "/dashboard/ads",
+      label: "Ads Campaign",
+      Icon: Megaphone,
+      actives: ["/dashboard/ads"],
+    },
+    {
+      to: "/dashboard/profile",
+      label: "Profile",
+      Icon: User,
+      actives: ["/dashboard/profile"],
+    },
+    { to: "/logout", label: "Logout", Icon: LogOut, actives: ["/logout"] },
   ];
 
   return (
     <aside className="w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-3">
       <div className="flex items-center gap-2 px-2 py-3"></div>
       <nav className="space-y-1">
-        {links.map(({ to, label, Icon }) => (
-          <SidebarItem key={label} to={to} label={label} Icon={Icon} />
+        {links.map(({ to, label, Icon, actives }) => (
+          <SidebarItem
+            key={label}
+            to={to}
+            label={label}
+            Icon={Icon}
+            actives={actives}
+          />
         ))}
       </nav>
     </aside>

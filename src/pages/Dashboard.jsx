@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../components/dashboard/Sidebar";
 import Topbar from "../components/dashboard/Topbar";
 import WebSolutionForm from "../components/dashboard/WebSolution/WebSolutionForm";
-import SeoPanel from "../components/dashboard/SeoPanel";
+import SeoPanel from "../components/dashboard/WebSolution/SeoPanel";
 import { Outlet } from "react-router";
 
 export default function Dashboard() {

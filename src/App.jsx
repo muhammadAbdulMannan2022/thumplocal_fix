@@ -16,6 +16,11 @@ import ResetSuccess from "./components/Login_Registration/ResetSuccess";
 import Register from "./components/Login_Registration/Register";
 import Dashboard from "./pages/Dashboard";
 import WebSolutionLayout from "./components/dashboard/WebSolution/WebSolutionLayout";
+import SeoPanel from "./components/dashboard/WebSolution/SeoPanel";
+import NewW from "./components/dashboard/WebSolution/NewW";
+import OldW from "./components/dashboard/WebSolution/OldW";
+import ServicesPageLayout from "./components/dashboard/ServicesPage/ServicesPageLayout";
+import ServicesPage from "./components/dashboard/ServicesPage/ServicesPage";
 
 function App() {
   return (
@@ -33,12 +38,22 @@ function App() {
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="web-solution" element={<WebSolutionLayout />} />
+            <Route path="web-solution" element={<WebSolutionLayout />}>
+              <Route path="seo" element={<SeoPanel />}>
+                <Route path="" element={<NewW />} />
+                <Route path="exWeb" element={<OldW />} />
+              </Route>
+            </Route>
+            {/* /dashboard/web-solution-sp */}
+            <Route
+              path="web-solution-sp"
+              element={<ServicesPageLayout />}
+            ></Route>
           </Route>
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="*" element={<Navigate to="/404" />} />
-          <Route path="/404" element={<NotFoundPage />} />
+          {/* <Route path="*" element={<Navigate to="/404" />} />
+          <Route path="/404" element={<NotFoundPage />} /> */}
         </Routes>
       </Layout>
     </Router>
