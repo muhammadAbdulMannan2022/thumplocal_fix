@@ -46,6 +46,7 @@ const Sidebar = () => {
         "/dashboard/web-solution/seo",
         "/dashboard/web-solution/seo/exWeb",
         "/dashboard/web-solution-sp",
+        "/dashboard/web-builder",
       ],
     },
     {

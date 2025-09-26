@@ -21,6 +21,7 @@ import NewW from "./components/dashboard/WebSolution/NewW";
 import OldW from "./components/dashboard/WebSolution/OldW";
 import ServicesPageLayout from "./components/dashboard/ServicesPage/ServicesPageLayout";
 import ServicesPage from "./components/dashboard/ServicesPage/ServicesPage";
+import WebBuilderLayout from "./components/dashboard/WebBuilder/WebBuilderLayout";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
               path="web-solution-sp"
               element={<ServicesPageLayout />}
             ></Route>
+            <Route path="web-builder" element={<WebBuilderLayout />}></Route>
           </Route>
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

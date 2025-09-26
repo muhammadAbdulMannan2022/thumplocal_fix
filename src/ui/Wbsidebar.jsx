@@ -68,8 +68,8 @@ const Wbsidebar = ({ children }) => {
     {
       label: "Web Builder",
       Icon: Globe,
-      to: "/dashboard/web-solution/wb",
-      active: ["/dashboard/web-solution/wb"],
+      to: "/dashboard/web-builder",
+      active: ["/dashboard/web-builder"],
     },
   ];
 
