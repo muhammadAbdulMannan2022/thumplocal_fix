@@ -8,7 +8,7 @@ import { Outlet } from "react-router";
 export default function Dashboard() {
   return (
     <div className="bg-gray-50 py-4">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 min-h-screen">
         <Topbar />
         <div className="flex gap-6">
           <Sidebar />

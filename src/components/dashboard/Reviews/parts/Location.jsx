@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
+import Modal from "../../../../ui/MapModal";
 
 export default function ReviewLocation() {
   const [locationData, setLocationData] = useState({
@@ -15,6 +16,7 @@ export default function ReviewLocation() {
     gpsLocation: "",
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLocationData((prev) => ({
@@ -186,7 +188,10 @@ export default function ReviewLocation() {
               />
               <button
                 type="button"
-                onClick={handleAutoLocate}
+                onClick={() => {
+                  handleAutoLocate();
+                  setIsModalOpen(true);
+                }}
                 className="px-4 py-2 bg-[#8BB353] hover:bg-[#8BB353]/90 hover:cursor-pointer text-white rounded-r-md transition-colors"
               >
                 <FaMapLocationDot />
@@ -195,6 +200,7 @@ export default function ReviewLocation() {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

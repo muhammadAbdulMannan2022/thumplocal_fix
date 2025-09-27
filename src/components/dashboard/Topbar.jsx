@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Topbar = () => {
   return (
-    <div className="flex items-center justify-end py-2 px-4 bg-white/90 border border-gray-100 rounded-lg shadow-sm mb-4">
+    <div className="flex items-center justify-between py-2 px-4 bg-white/90 border border-gray-100 rounded-lg shadow-sm mb-4">
+      <div>
+        <img className="h-10" src="/logo.png" alt="" />
+      </div>
       <div className="flex items-center gap-3">
         <span className="text-sm text-gray-500">Md. Sajib</span>
         <img
@@ -12,7 +15,7 @@ const Topbar = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Topbar
+export default Topbar;
