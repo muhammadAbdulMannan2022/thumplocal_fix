@@ -44,7 +44,7 @@ export default function ReviewLocation() {
 
   return (
     <div className="py-5">
-      <div className="bg-white rounded-lg p-6 shadow-sm">
+      <div className="bg-white/10 backdrop-blur-xs rounded-lg py-6">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">
           Location and Contact Details
         </h2>

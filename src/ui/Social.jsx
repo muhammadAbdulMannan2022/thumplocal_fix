@@ -27,8 +27,8 @@ export const SocialMediaLinks = () => {
     },
   ];
   return (
-    <div id="webcrumbs">
-      <div className="w-full bg-gray-50 p-6">
+    <div id="webcrumbs" className="min-h-[80vh]">
+      <div className="w-full bg-gray-50/10 p-6">
         {/* Grid Container for Titles & Sections */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Social Media Column */}

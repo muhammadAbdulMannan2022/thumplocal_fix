@@ -36,8 +36,8 @@ export default function ReviewForm() {
   };
 
   return (
-    <div className="bg-gray-100 p-6">
-      <div className="bg-white rounded-lg p-6 shadow-sm">
+    <div className="py-6">
+      <div className="bg-white/10 rounded-lg p-6 shadow-sm">
         {/* Basic informations */}
         <div className="mb-8">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">

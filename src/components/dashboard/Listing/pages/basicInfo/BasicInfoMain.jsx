@@ -26,10 +26,7 @@ export function BusinessInfoForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-6xl mx-auto p-8 bg-white rounded-xl shadow-sm"
-    >
+    <form onSubmit={handleSubmit} className="mx-auto py-8 ">
       {/* Basic Information Section */}
       <div className="mb-10">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">

@@ -98,7 +98,7 @@ function AddsLayout() {
   ];
 
   return (
-    <div className=" bg-gray-50 w-full">
+    <div className=" min-h-[85vh] w-full">
       <div className="px-4">
         <div className="px-6 py-4 border-b border-gray-200">
           <h1 className="text-xl font-semibold text-gray-900">

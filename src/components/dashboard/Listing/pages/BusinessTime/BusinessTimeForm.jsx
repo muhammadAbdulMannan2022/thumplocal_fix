@@ -95,12 +95,9 @@ export function BusinessForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-6xl mx-auto p-8 bg-white rounded-xl shadow-sm space-y-5"
-    >
+    <form onSubmit={handleSubmit} className="mx-auto py-8 space-y-5">
       {/* Business Times Section */}
-      <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Business Times
         </h2>
@@ -175,7 +172,7 @@ export function BusinessForm() {
       </div>
 
       {/* Service Areas Section */}
-      <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Service areas
         </h2>
@@ -207,7 +204,7 @@ export function BusinessForm() {
       </div>
 
       {/* Media & Branding Section */}
-      <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Media & Branding
         </h2>
@@ -237,7 +234,7 @@ export function BusinessForm() {
       </div>
 
       {/* Customer Interaction Section */}
-      <div className="bg-gray-50 p-6 rounded-lg">
+      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">
           Customer Interaction
         </h2>

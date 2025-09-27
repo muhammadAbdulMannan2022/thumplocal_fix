@@ -69,7 +69,7 @@ export function LocationManager() {
       {locations.map((location, index) => (
         <div
           key={location.id}
-          className="relative border border-gray-200 rounded-lg p-4"
+          className="relative border border-gray-200 backdrop-blur-xs rounded-lg p-4"
         >
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-gray-800">

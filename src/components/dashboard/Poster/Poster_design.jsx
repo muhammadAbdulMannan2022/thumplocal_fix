@@ -298,7 +298,7 @@ export function PosterDesigner() {
       </div>
 
       {/* Right Panel - Poster Gallery */}
-      <div className="flex-1 bg-gray-50 p-4">
+      <div className="flex-1 bg-gray-50/10 backdrop-blur-xs p-4">
         <div className="bg-white rounded p-3 mb-3">
           <h2 className="text-lg font-semibold text-gray-800">
             Building The Website With SEO
@@ -339,7 +339,7 @@ export function PosterDesigner() {
             {contentFiles.map((f, i) => (
               <div
                 key={i}
-                className={`rounded overflow-hidden border bg-gray-50 p-1 relative group`}
+                className={`rounded overflow-hidden border bg-gray-50/10  p-1 relative group`}
                 onClick={() => setSelectedIndex(i)}
               >
                 <div
