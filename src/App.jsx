@@ -26,7 +26,10 @@ import { PosterDesigner } from "./components/dashboard/Poster/Poster_design";
 import ListingLayout from "./components/dashboard/Listing/ListingLayout";
 import { BusinessInfoForm } from "./components/dashboard/Listing/pages/basicInfo/BasicInfoMain";
 import { BusinessForm } from "./components/dashboard/Listing/pages/BusinessTime/BusinessTimeForm";
-import { SocialMediaLinks } from "./components/dashboard/Listing/pages/SocialMedia/Social";
+import { SocialMediaLinks } from "./ui/Social";
+import ReviewLayout from "./components/dashboard/Reviews/ReviewMain";
+import ReviewForm from "./components/dashboard/Reviews/parts/ReviewForm";
+import SocialReviewPage from "./components/dashboard/Reviews/parts/SocialReviewPage";
 
 function App() {
   return (
@@ -63,6 +66,10 @@ function App() {
               <Route index element={<BusinessInfoForm />} />
               <Route path="time" element={<BusinessForm />} />
               <Route path="social" element={<SocialMediaLinks />} />
+            </Route>
+            <Route path="reviews" element={<ReviewLayout />}>
+              <Route index element={<ReviewForm />} />
+              <Route path="social" element={<SocialReviewPage />} />
             </Route>
           </Route>
           <Route path="/about" element={<AboutPage />} />
