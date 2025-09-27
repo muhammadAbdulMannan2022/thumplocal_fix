@@ -31,6 +31,7 @@ import ReviewLayout from "./components/dashboard/Reviews/ReviewMain";
 import ReviewForm from "./components/dashboard/Reviews/parts/ReviewForm";
 import SocialReviewPage from "./components/dashboard/Reviews/parts/SocialReviewPage";
 import CompanyProfile from "./components/dashboard/profile/Profile";
+import AddsLayout from "./components/dashboard/adds/AddsLayout";
 
 function App() {
   return (
@@ -72,7 +73,7 @@ function App() {
               <Route index element={<ReviewForm />} />
               <Route path="social" element={<SocialReviewPage />} />
             </Route>
-            <Route path="ads" element={<div>Ads Campaign</div>} />
+            <Route path="ads" element={<AddsLayout />} />
             <Route path="profile" element={<CompanyProfile />} />
           </Route>
           <Route path="/about" element={<AboutPage />} />
