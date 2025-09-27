@@ -59,7 +59,11 @@ const Sidebar = () => {
       to: "/dashboard/listing",
       label: "Listing",
       Icon: List,
-      actives: ["/dashboard/listing", "/dashboard/listing/time"],
+      actives: [
+        "/dashboard/listing",
+        "/dashboard/listing/time",
+        "/dashboard/listing/social",
+      ],
     },
     {
       to: "/dashboard/reviews",

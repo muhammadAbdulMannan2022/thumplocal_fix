@@ -26,6 +26,7 @@ import { PosterDesigner } from "./components/dashboard/Poster/Poster_design";
 import ListingLayout from "./components/dashboard/Listing/ListingLayout";
 import { BusinessInfoForm } from "./components/dashboard/Listing/pages/basicInfo/BasicInfoMain";
 import { BusinessForm } from "./components/dashboard/Listing/pages/BusinessTime/BusinessTimeForm";
+import { SocialMediaLinks } from "./components/dashboard/Listing/pages/SocialMedia/Social";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
             <Route path="listing" element={<ListingLayout />}>
               <Route index element={<BusinessInfoForm />} />
               <Route path="time" element={<BusinessForm />} />
+              <Route path="social" element={<SocialMediaLinks />} />
             </Route>
           </Route>
           <Route path="/about" element={<AboutPage />} />

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Upload, X } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export function BusinessForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     // Business Times
     businessDays: "",
@@ -89,6 +91,7 @@ export function BusinessForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
+    navigate("/dashboard/listing/social");
   };
 
   return (
