@@ -28,7 +28,7 @@ ThumpAI is a cutting-edge SaaS platform that redefines digital marketing for loc
 | Layer        | Technologies                     |
 |--------------|----------------------------------|
 | Frontend     | React.js, Redux, Tailwind CSS    |
-| Backend      | Node.js, Express.js              |
+| Backend      | Python, Django                   |
 | Database     | MongoDB, AWS                     |
 | AI/ML        | Python, Django                   |
 | Design       | Figma                            |
