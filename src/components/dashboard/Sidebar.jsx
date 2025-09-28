@@ -110,7 +110,7 @@ const Sidebar = () => {
     <>
       {/* Sidebar */}
       <aside
-        className={` fixed md:static h-full md:h-[90vh] w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-2 md:p-3 transition-transform duration-300 ease-in-out z-[9999]
+        className={` fixed md:static h-full md:h-[90vh] w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-2 md:p-3 transition-transform duration-300 ease-in-out z-[9999] md:z-10
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
         <div className="hidden md:flex items-center gap-2 px-2 py-3"></div>
