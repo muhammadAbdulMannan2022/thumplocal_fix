@@ -22,14 +22,7 @@ const RangeBar = ({
           {/* Track */}
           <div className="absolute w-2 h-full bg-gray-200 rounded-full left-1/2 -translate-x-1/2"></div>
 
-          {/* Step indicators for discrete values */}
-          {step === 1 && max > min && (
-            <div className="absolute left-1/2 -translate-x-1/2 h-full flex flex-col justify-between py-1">
-              {Array.from({ length: max - min + 1 }, (_, i) => (
-                <div key={i} className="w-1 h-1 bg-gray-400 rounded-full"></div>
-              ))}
-            </div>
-          )}
+          {/* Step indicators hidden but functionality preserved */}
 
           {/* Progress (fills from the top) */}
           <div
@@ -66,13 +59,13 @@ const RangeBar = ({
   // --- Horizontal Layout ---
   return (
     <div className="relative w-full flex flex-col items-center my-4 px-4">
-      <div className="relative w-full h-4">
+      <div className="relative w-full h-6">
         {/* Track */}
-        <div className="absolute w-full h-2 bg-gray-200 rounded-full top-1"></div>
+        <div className="absolute w-full h-3 bg-gray-200 rounded-full top-1.5"></div>
 
         {/* Progress */}
         <div
-          className="absolute h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full top-1"
+          className="absolute h-3 bg-gradient-to-r from-green-400 to-teal-500 rounded-full top-1.5"
           style={{ width: `${percentage}%` }}
         ></div>
 

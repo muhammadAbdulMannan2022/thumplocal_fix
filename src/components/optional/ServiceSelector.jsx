@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from "react";
+import React, { useState, useMemo } from "react";
 import ServiceCard from "./ServiceCard";
 import RangeBar from "./RangeBar";
 import SummaryPanel from "./SummaryPanel";
@@ -67,13 +67,8 @@ const initialServices = [
 
 const ServiceSelector = () => {
   const [services, setServices] = useState(initialServices);
-  const [sliderValue, setSliderValue] = useState(1);
-  const [svgPaths, setSvgPaths] = useState([]);
-
-  // Refs to measure DOM element positions
-  const containerRef = useRef(null);
-  const rangeBarRef = useRef(null);
-  const serviceCardRefs = useRef({});
+  const [sliderValue, setSliderValue] = useState(0);
+  // Removed connector line logic & refs (no longer needed)
 
   const handleSliderChange = (e) => setSliderValue(parseInt(e.target.value));
 
@@ -86,11 +81,7 @@ const ServiceSelector = () => {
   const handleRemoveService = (idToRemove) => {
     setServices((prevServices) => {
       const newServices = prevServices.filter((s) => s.id !== idToRemove);
-      setSliderValue((prevSlider) => {
-        const maxSlider = newServices.length > 0 ? newServices.length : 1;
-        return Math.min(prevSlider, maxSlider);
-      });
-      delete serviceCardRefs.current[idToRemove];
+      // Keep slider value as is - percentage based system doesn't need adjustment
       return newServices;
     });
   };
@@ -116,68 +107,83 @@ const ServiceSelector = () => {
     () => services.filter((s) => s.position === "bottom"),
     [services]
   );
-  const activeServices = useMemo(
-    () => orderedServices.slice(0, sliderValue),
-    [sliderValue, orderedServices]
-  );
-  const activeServiceIds = useMemo(
-    () => new Set(activeServices.map((s) => s.id)),
-    [activeServices]
-  );
+  // Custom activation logic based on percentage
+  const activeServiceIds = useMemo(() => {
+    const activeIds = new Set();
+    
+    // Top cards activation logic - dynamically distribute between 0% and 100%
+    const topCount = topServices.length;
+    if (topCount > 0) {
+      if (topCount === 1) {
+        // Single card activates at 0%
+        if (sliderValue >= 0) activeIds.add(topServices[0].id);
+      } else {
+        // Multiple cards: first at 0%, last at 100%, others evenly distributed
+        const step = 100 / (topCount - 1);
+        for (let i = 0; i < topCount; i++) {
+          const threshold = i * step;
+          if (sliderValue >= threshold) {
+            activeIds.add(topServices[i].id);
+          }
+        }
+      }
+    }
+    
+    // Bottom cards activation logic
+    const bottomCount = bottomServices.length;
+    if (bottomCount > 0) {
+      if (sliderValue >= 20) activeIds.add(bottomServices[0].id); // First bottom card at 20%
+      if (bottomCount > 1) {
+        // Distribute remaining bottom cards between 20% and 80%
+        const step = bottomCount > 2 ? (80 - 20) / (bottomCount - 1) : 60;
+        for (let i = 1; i < bottomCount - 1; i++) {
+          const threshold = 20 + (step * i);
+          if (sliderValue >= threshold) activeIds.add(bottomServices[i].id);
+        }
+        // Last bottom card at 80%
+        if (sliderValue >= 80) activeIds.add(bottomServices[bottomCount - 1].id);
+      }
+    }
+    
+    return activeIds;
+  }, [sliderValue, topServices, bottomServices]);
+  
+  const activeServices = useMemo(() => {
+    return services.filter(service => activeServiceIds.has(service.id));
+  }, [services, activeServiceIds]);
   const totalAmount = useMemo(
     () => activeServices.reduce((sum, s) => sum + s.price, 0),
     [activeServices]
   );
   const hasServices = services.length > 0;
 
+  // Create step positions for the slider based on activation thresholds
   const stepPositions = useMemo(() => {
-    if (orderedServices.length <= 1) return [50];
-    return orderedServices.map(
-      (_, i) => (i / (orderedServices.length - 1)) * 100
-    );
-  }, [orderedServices]);
+    const positions = new Set([0]); // Always include 0%
+    
+    // Add top card thresholds - dynamically distributed
+    const topCount = topServices.length;
+    if (topCount > 1) {
+      const step = 100 / (topCount - 1);
+      for (let i = 1; i < topCount; i++) {
+        positions.add(Math.round(i * step));
+      }
+    }
+    
+    // Add bottom card thresholds
+    if (bottomServices.length > 0) positions.add(20);
+    if (bottomServices.length > 1) positions.add(80);
+    if (bottomServices.length > 2) {
+      const step = (80 - 20) / (bottomServices.length - 1);
+      for (let i = 1; i < bottomServices.length - 1; i++) {
+        positions.add(Math.round(20 + (step * i)));
+      }
+    }
+    
+    return Array.from(positions).sort((a, b) => a - b);
+  }, [topServices.length, bottomServices.length]);
 
-  // This effect calculates the SVG path coordinates after the layout is painted
-  useLayoutEffect(() => {
-    const calculatePaths = () => {
-      if (!containerRef.current || !rangeBarRef.current) return;
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const rangeBarRect = rangeBarRef.current.getBoundingClientRect();
-      const newPaths = services
-        .map((service) => {
-          const cardElement = serviceCardRefs.current[service.id];
-          const serviceIndex = orderedServices.findIndex(
-            (s) => s.id === service.id
-          );
-          if (!cardElement || serviceIndex === -1) return null;
-          const cardRect = cardElement.getBoundingClientRect();
-          const isTop = service.position === "top";
-          const startX =
-            cardRect.left - containerRect.left + cardRect.width / 2;
-          const startY = isTop
-            ? cardRect.bottom - containerRect.top
-            : cardRect.top - containerRect.top;
-          const endX =
-            rangeBarRect.left -
-            containerRect.left +
-            rangeBarRect.width * (stepPositions[serviceIndex] / 100);
-          const endY =
-            rangeBarRect.top - containerRect.top + rangeBarRect.height / 2;
-          const controlX = startX;
-          const controlY = endY;
-          return {
-            id: service.id,
-            d: `M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`,
-          };
-        })
-        .filter(Boolean);
-      setSvgPaths(newPaths);
-    };
-    calculatePaths();
-    const resizeObserver = new ResizeObserver(calculatePaths);
-    resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
-  }, [services, orderedServices, stepPositions, sliderValue]);
+  // Removed layout measurement effect (connectors not needed anymore)
 
   return (
     <div className="w-full py-12 px-4 sm:px-6 lg:px-8 font-sans min-h-screen">
@@ -192,31 +198,13 @@ const ServiceSelector = () => {
           the pointer to see the appropriate package for you.
         </h2>
         <div className="container mx-auto flex flex-col lg:flex-row lg:items-center">
-          <div className="flex-grow relative" ref={containerRef}>
-            {/* SVG Overlay for Connectors - CORRECTED */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none lg:block hidden"
-              style={{ zIndex: 20 }}
-            >
-              {svgPaths.map((path) => (
-                <path
-                  key={path.id}
-                  d={path.d}
-                  strokeWidth="2"
-                  fill="none"
-                  className={`transition-all duration-300 ${
-                    activeServiceIds.has(path.id)
-                      ? "stroke-green-500"
-                      : "stroke-gray-300"
-                  }`}
-                />
-              ))}
-            </svg>
+          <div className="flex-grow relative">
+            {/* Connector SVG removed */}
 
             {/* --- Large Screen Layout --- */}
             <div className="hidden lg:block">
               <div
-                className="grid gap-6 pb-24 place-items-center"
+                className="grid gap-6 pb-24 place-items-center pl-8"
                 style={{
                   gridTemplateColumns: `repeat(${Math.max(
                     topServices.length,
@@ -226,7 +214,6 @@ const ServiceSelector = () => {
               >
                 {topServices.map((service) => (
                   <ServiceCard
-                    ref={(el) => (serviceCardRefs.current[service.id] = el)}
                     key={service.id}
                     {...service}
                     isTop={true}
@@ -238,29 +225,28 @@ const ServiceSelector = () => {
                 ))}
               </div>
               {hasServices && (
-                <div className="" ref={rangeBarRef}>
+                <div className="mx-auto" style={{width:"81%", marginLeft:"11%", marginRight:"13%"}}>
                   <RangeBar
                     value={sliderValue}
                     onChange={handleSliderChange}
-                    min={1}
-                    max={orderedServices.length}
+                    min={0}
+                    max={100}
                     step={1}
                     stepPositions={stepPositions}
                   />
                 </div>
               )}
               <div
-                className="grid gap-6 pt-24 place-items-center"
+                className="grid gap-7 ml-5 pt-24 place-items-center justify-center"
                 style={{
                   gridTemplateColumns: `repeat(${Math.max(
                     bottomServices.length,
                     1
-                  )}, 1fr)`,
+                  )}, max-content)`,
                 }}
               >
                 {bottomServices.map((service) => (
                   <ServiceCard
-                    ref={(el) => (serviceCardRefs.current[service.id] = el)}
                     key={service.id}
                     {...service}
                     isTop={false}
@@ -276,7 +262,7 @@ const ServiceSelector = () => {
             {/* --- Small Screen Vertical Layout --- */}
             <div className="lg:hidden">
               <div className="w-full overflow-x-auto pb-4">
-                <div className="inline-grid grid-cols-[1fr_auto_1fr] gap-x-6 items-start min-w-[600px]">
+                <div className="inline-grid grid-cols-[1fr_auto_1fr] gap-x-6items-start min-w-[600px]">
                   <div className="flex flex-col items-end space-y-12 py-8">
                     {topServices.map((service) => (
                       <ServiceCard
@@ -298,8 +284,8 @@ const ServiceSelector = () => {
                       <RangeBar
                         value={sliderValue}
                         onChange={handleSliderChange}
-                        min={1}
-                        max={orderedServices.length}
+                        min={0}
+                        max={100}
                         step={1}
                         orientation="vertical"
                         stepPositions={stepPositions}

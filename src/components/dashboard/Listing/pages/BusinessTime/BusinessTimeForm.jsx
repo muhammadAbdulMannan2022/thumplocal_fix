@@ -95,16 +95,16 @@ export function BusinessForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto py-8 space-y-5">
+    <form onSubmit={handleSubmit} className="mx-auto py-4 sm:py-8 px-3 sm:px-0 space-y-4 sm:space-y-5">
       {/* Business Times Section */}
-      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+      <div className="bg-gray-50/10 backdrop-blur-xs p-3 sm:p-6 rounded-lg">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">
           Business Times
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Business Days
             </label>
             <input
@@ -114,7 +114,7 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("businessDays", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
@@ -172,15 +172,15 @@ export function BusinessForm() {
       </div>
 
       {/* Service Areas Section */}
-      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+      <div className="bg-gray-50/10 backdrop-blur-xs p-3 sm:p-6 rounded-lg">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">
           Service areas
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {["zipCodes", "cities", "areaCode", "languages"].map((field, idx) => (
             <div key={idx}>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 {field === "zipCodes"
                   ? "ZIP codes"
                   : field === "cities"
@@ -194,7 +194,7 @@ export function BusinessForm() {
                 placeholder="Enter here"
                 value={formData[field]}
                 onChange={(e) => handleInputChange(field, e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+                className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                          rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                          focus:border-transparent text-gray-800"
               />
@@ -204,12 +204,12 @@ export function BusinessForm() {
       </div>
 
       {/* Media & Branding Section */}
-      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+      <div className="bg-gray-50/10 backdrop-blur-xs p-3 sm:p-6 rounded-lg">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">
           Media & Branding
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <FileUploadButton
             field="businessLogo"
             label="Business Logo"
@@ -234,12 +234,12 @@ export function BusinessForm() {
       </div>
 
       {/* Customer Interaction Section */}
-      <div className="bg-gray-50/10 backdrop-blur-xs  p-6 rounded-lg">
-        <h2 className="text-xl font-semibold text-gray-800 mb-6">
+      <div className="bg-gray-50/10 backdrop-blur-xs p-3 sm:p-6 rounded-lg">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">
           Customer Interaction
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           <FileUploadButton
             field="promotionalImage"
             label="Promotional Image"
@@ -247,7 +247,7 @@ export function BusinessForm() {
           />
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Name of Call to Action (CTA) button
             </label>
             <input
@@ -257,7 +257,7 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("ctaButtonName", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
@@ -283,11 +283,11 @@ export function BusinessForm() {
       </div>
 
       {/* Submit Button */}
-      <div className="flex justify-center pt-6">
+      <div className="flex justify-center pt-4 sm:pt-6">
         <button
           type="submit"
-          className="bg-[#8BB353] hover:bg-[#7AA142] text-white px-8 py-3 rounded-lg 
-                   transition-colors shadow-sm font-medium hover:cursor-pointer"
+          className="bg-[#8BB353] hover:bg-[#7AA142] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg 
+                   transition-colors shadow-sm font-medium hover:cursor-pointer text-sm sm:text-base"
         >
           Submit Business Information
         </button>

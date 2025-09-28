@@ -16,7 +16,7 @@ const ServiceCard = ({
   onRemove,
 }) => {
   return (
-    <div className="relative flex flex-col items-center text-center w-48 lg:min-h-56">
+  <div className="relative flex flex-col items-center text-center w-48 lg:min-h-56">
       {/* Vertical Connector (Large Screens) */}
       <div
         className={`hidden lg:block absolute w-[4px] bg-gray-300 ${
@@ -31,7 +31,7 @@ const ServiceCard = ({
         }`}
       />
 
-      <div className=" p-4  w-full h-full flex flex-col">
+  <div className="p-4 w-full h-full flex flex-col rounded-xl bg-white transition-colors duration-300 hover:bg-gray-50">
         <div className="flex-grow">
           <h3 className="font-bold text-gray-800 text-sm">{title}</h3>
           {details && <p className="text-xs text-gray-500 my-2">{details}</p>}

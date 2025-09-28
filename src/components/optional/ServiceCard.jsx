@@ -7,8 +7,9 @@ const ServiceCard = forwardRef(
       id,
       title,
       details,
-      options,
-      isLeft, // Prop for mobile layout
+  options,
+  isTop, // desktop row indicator
+  isLeft, // Prop for mobile layout
       adjustable,
       minPrice,
       maxPrice,
@@ -24,23 +25,38 @@ const ServiceCard = forwardRef(
         ref={ref}
         className="relative flex flex-col items-center text-center w-48 lg:w-52"
       >
-        {/* Mobile-only CSS connectors - RESTORED */}
-        <div
-          className={`block lg:hidden absolute h-1 z-0 transition-colors duration-300 ${
-            isActive ? "bg-green-500" : "bg-gray-300"
-          } ${isLeft ? "left-full w-12" : "right-full w-12"}`}
-          style={{
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        />
+        {/* Mobile horizontal connector removed */}
+
+        {/* Desktop short vertical guide lines (top row downward, bottom row upward) */}
+        {isTop && (
+          <span
+            className="hidden lg:block absolute w-[3px] bg-gray-300"
+            style={{
+              bottom: "-72px", // moved further so extended line still leaves gap
+              height: "60px", // increased height
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+            aria-hidden="true"
+          />
+        )}
+        {!isTop && (
+          <span
+            className="hidden lg:block absolute w-[3px] bg-gray-300"
+            style={{
+              top: "-72px", // adjust upward offset matching new height
+              height: "60px",
+              left: "50%",
+              transform: "translateX(-50%)",
+            }}
+            aria-hidden="true"
+          />
+        )}
 
         {/* Card Content */}
         <div
-          className={`relative p-6 w-full h-full flex flex-col rounded-lg border-2 transition-all duration-300 shadow-sm z-10 ${
-            isActive
-              ? "bg-green-50 border-green-200 shadow-md"
-              : "bg-white border-gray-200 hover:border-gray-300"
+          className={`relative p-6 w-full h-full flex flex-col rounded-xl transition-colors duration-300 z-10 shadow-none ${
+            isActive ? "bg-green-50" : "bg-white hover:bg-gray-50"
           }`}
         >
           <div className="flex-grow">
@@ -85,18 +101,20 @@ const ServiceCard = forwardRef(
                 Remove
               </button>
             </div>
-            {adjustable && (
-              <div className="mt-2">
+            <div className="mt-2 h-14 flex items-center w-full">
+              {adjustable && (
                 <RangeBar
                   value={value}
-                  onChange={(e) => onPriceChange(id, parseInt(e.target.value))}
+                  onChange={(e) =>
+                    onPriceChange(id, parseInt(e.target.value))
+                  }
                   min={minPrice}
                   max={maxPrice}
                   showTicks={true}
                   step="any"
                 />
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

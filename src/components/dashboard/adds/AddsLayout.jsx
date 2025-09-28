@@ -15,20 +15,20 @@ function FileUpload({ label, fileName, onFileSelect }) {
   };
 
   return (
-    <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
-      <div className="flex gap-2">
+    <div className="space-y-1 sm:space-y-2">
+      <label className="block text-xs sm:text-sm font-medium text-gray-700">{label}</label>
+      <div className="flex flex-col sm:flex-row gap-2">
         <input
           ref={inputRef}
           type="file"
           accept=".jpg,.jpeg,.png,.svg"
           onChange={handleFileChange}
           placeholder="*.jpg,*.png,*.svg"
-          className="flex-1 file:bg-[#EBF0EB] file:text-[#536047] rounded border border-gray-200 bg-white px-3 py-2 text-xs text-gray-500 file:px-2 file:py-1 file:border file:border-gray-300 file:rounded-md hover:cursor-pointer file:hover:cursor-pointer"
+          className="flex-1 file:bg-[#EBF0EB] file:text-[#536047] rounded border border-gray-200 bg-white px-3 py-2.5 sm:py-2 text-xs text-gray-500 file:px-2 file:py-1 file:border file:border-gray-300 file:rounded-md hover:cursor-pointer file:hover:cursor-pointer"
         />
         {fileName && (
-          <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded">
-            <span className="text-sm text-gray-600">{fileName}</span>
+          <div className="flex items-center gap-2 bg-gray-50 px-3 py-2 sm:py-1.5 rounded">
+            <span className="text-sm text-gray-600 truncate">{fileName}</span>
             <button
               type="button"
               onClick={handleRemoveFile}
@@ -99,9 +99,9 @@ function AddsLayout() {
 
   return (
     <div className=" min-h-[85vh] w-full">
-      <div className="px-4">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h1 className="text-xl font-semibold text-gray-900">
+      <div className="px-2 sm:px-4">
+        <div className="px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
+          <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
             Google Ads (Smart Campaign) - Fields Google Asks
           </h1>
         </div>
@@ -109,17 +109,17 @@ function AddsLayout() {
           {/* Header */}
 
           {/* Category Tabs */}
-          <div className="px-6 pt-6 flex flex-col items-center justify-center">
-            <div className="mb-6 flex flex-col items-center">
-              <h2 className="text-2xl font-medium text-gray-900 mb-3 text-center">
+          <div className="px-3 sm:px-6 pt-4 sm:pt-6 flex flex-col items-center justify-center">
+            <div className="mb-4 sm:mb-6 flex flex-col items-center">
+              <h2 className="text-xl sm:text-2xl font-medium text-gray-900 mb-2 sm:mb-3 text-center">
                 Category of Advertisement
               </h2>
-              <div className="flex space-x-1">
+              <div className="flex flex-wrap justify-center gap-1 sm:space-x-1">
                 {categories.map((category) => (
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`px-4 py-2 text-sm font-medium rounded transition-colors duration-200 hover:cursor-pointer ${
+                    className={`px-3 sm:px-4 py-2 text-sm font-medium rounded transition-colors duration-200 hover:cursor-pointer ${
                       activeCategory === category.id
                         ? "text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -137,17 +137,17 @@ function AddsLayout() {
           </div>
 
           {/* Form Content */}
-          <div className="px-6 pb-6 bg-white rounded-lg shadow-sm border pt-5">
+          <div className="px-3 sm:px-6 pb-4 sm:pb-6 bg-white rounded-lg shadow-sm pt-4 sm:pt-5">
             {/* Search Ads Form */}
             {activeCategory === "search" && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">
                   Search Ads
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Business Name
                     </label>
                     <input
@@ -157,7 +157,7 @@ function AddsLayout() {
                         updateFormData("search", "businessName", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
@@ -171,8 +171,8 @@ function AddsLayout() {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Final Url
                     </label>
                     <input
@@ -182,12 +182,12 @@ function AddsLayout() {
                         updateFormData("search", "finalUrl", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring- focus:border-transparent placeholder:text-gray-400 text-gray-900"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent placeholder:text-gray-400 text-gray-900"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Display url
                     </label>
                     <input
@@ -197,23 +197,23 @@ function AddsLayout() {
                         updateFormData("search", "displayUrl", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className="space-y-1 sm:space-y-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700">
                     Description
                   </label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     value={formData.search.description}
                     onChange={(e) =>
                       updateFormData("search", "description", e.target.value)
                     }
                     placeholder="Enter here"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent resize-none"
+                    className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent resize-none"
                   />
                 </div>
               </div>
@@ -221,14 +221,14 @@ function AddsLayout() {
 
             {/* Display Ads Form */}
             {activeCategory === "display" && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">
                   Display Ads
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Headline
                     </label>
                     <input
@@ -238,12 +238,12 @@ function AddsLayout() {
                         updateFormData("display", "headline", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Long Headline
                     </label>
                     <input
@@ -257,12 +257,12 @@ function AddsLayout() {
                         )
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Description
                     </label>
                     <input
@@ -272,14 +272,14 @@ function AddsLayout() {
                         updateFormData("display", "description", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Business name
                     </label>
                     <input
@@ -293,7 +293,7 @@ function AddsLayout() {
                         )
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
@@ -307,8 +307,8 @@ function AddsLayout() {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Final Url
                     </label>
                     <input
@@ -318,7 +318,7 @@ function AddsLayout() {
                         updateFormData("display", "finalUrl", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
@@ -333,7 +333,7 @@ function AddsLayout() {
                   </div>
                 </div>
 
-                <div className="w-full md:w-1/2">
+                <div className="w-full lg:w-1/2">
                   <FileUpload
                     label="Logo"
                     fileName={formData.display.logo}
@@ -347,13 +347,13 @@ function AddsLayout() {
 
             {/* Video Ads Form */}
             {activeCategory === "video" && (
-              <div className="space-y-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-3 sm:mb-4">
                   Video Ads
                 </h3>
 
-                <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                <div className="space-y-1 sm:space-y-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700">
                     Youtube url of the video
                   </label>
                   <input
@@ -363,13 +363,13 @@ function AddsLayout() {
                       updateFormData("video", "youtubeUrl", e.target.value)
                     }
                     placeholder="Enter here"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                    className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Final Url
                     </label>
                     <input
@@ -379,12 +379,12 @@ function AddsLayout() {
                         updateFormData("video", "finalUrl", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Call to action
                     </label>
                     <input
@@ -394,12 +394,12 @@ function AddsLayout() {
                         updateFormData("video", "callToAction", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] placeholder:text-gray-400 text-gray-900   focus:border-transparent"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                  <div className="space-y-1 sm:space-y-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700">
                       Display url
                     </label>
                     <input
@@ -409,7 +409,7 @@ function AddsLayout() {
                         updateFormData("video", "displayUrl", e.target.value)
                       }
                       placeholder="Enter here"
-                      className="w-full px-3 py-2 placeholder:text-gray-400 text-gray-900  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353]  focus:border-transparent"
+                      className="w-full px-3 py-2.5 sm:py-2 placeholder:text-gray-400 text-gray-900  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8BB353]  focus:border-transparent"
                     />
                   </div>
 
@@ -427,10 +427,10 @@ function AddsLayout() {
             )}
 
             {/* Save Button */}
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-6 sm:mt-8">
               <button
                 onClick={handleSave}
-                className="px-16 py-3 text-white font-medium rounded-md hover:opacity-90 transition-opacity duration-200"
+                className="px-8 sm:px-16 py-2.5 sm:py-3 text-white font-medium rounded-md hover:opacity-90 transition-opacity duration-200 text-sm sm:text-base"
                 style={{ backgroundColor: "#8BB353" }}
               >
                 Save

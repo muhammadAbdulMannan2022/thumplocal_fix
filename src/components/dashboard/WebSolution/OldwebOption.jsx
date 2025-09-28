@@ -18,14 +18,14 @@ export default function WebsiteFormOldOption() {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <form className="space-y-4">
+    <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+      <form className="space-y-3 sm:space-y-4">
         <div>
-          <label className="block text-xs text-gray-600 mb-1">
+          <label className="block text-xs sm:text-sm text-gray-600 mb-1 font-medium">
             Website link (Link)
           </label>
           <input
-            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353]"
+            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-[#8BB353]"
             placeholder="Enter here"
             value={formData.websiteLink}
             onChange={(e) => handleInputChange("websiteLink", e.target.value)}
@@ -33,12 +33,12 @@ export default function WebsiteFormOldOption() {
         </div>
 
         <div>
-          <label className="block text-xs text-gray-600 mb-1">
+          <label className="block text-xs sm:text-sm text-gray-600 mb-1 font-medium">
             Describe about you website
           </label>
           <textarea
-            rows={4}
-            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] resize-none"
+            rows={3}
+            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-[#8BB353] resize-none"
             placeholder="Enter here"
             value={formData.description}
             onChange={(e) => handleInputChange("description", e.target.value)}
@@ -46,12 +46,12 @@ export default function WebsiteFormOldOption() {
         </div>
 
         <div>
-          <label className="block text-xs text-gray-600 mb-1">
+          <label className="block text-xs sm:text-sm text-gray-600 mb-1 font-medium">
             Describe your target audience
           </label>
           <textarea
             rows={3}
-            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] resize-none"
+            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-[#8BB353] resize-none"
             placeholder="Enter here"
             value={formData.targetAudience}
             onChange={(e) =>
@@ -61,11 +61,11 @@ export default function WebsiteFormOldOption() {
         </div>
 
         <div>
-          <label className="block text-xs text-gray-600 mb-1">
+          <label className="block text-xs sm:text-sm text-gray-600 mb-1 font-medium">
             Name the competitors
           </label>
           <input
-            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353]"
+            className="w-full rounded border border-gray-200 bg-white text-gray-800 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-[#8BB353]"
             placeholder="Enter here"
             value={formData.competitors}
             onChange={(e) => handleInputChange("competitors", e.target.value)}
@@ -78,7 +78,7 @@ export default function WebsiteFormOldOption() {
 
         <button
           type="button"
-          className="w-full py-3 rounded-xl text-white font-semibold bg-[#8BB353] hover:bg-[#73b04a] shadow-lg shadow-[#8BB353]/30 transition-colors"
+          className="w-full py-3 sm:py-4 rounded-xl text-white font-semibold bg-[#8BB353] hover:bg-[#73b04a] shadow-lg shadow-[#8BB353]/30 transition-colors text-sm sm:text-base"
           onClick={handleStartProcessing}
         >
           Start Processing

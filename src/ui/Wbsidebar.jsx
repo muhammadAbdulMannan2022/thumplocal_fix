@@ -13,7 +13,7 @@ const Tab = ({ label, Icon, active: activeArray, onClick: click, to }) => {
         click();
         navigate(to);
       }}
-      className={`flex flex-1 min-w-0 items-center gap-2  py-3 rounded-b-2xl text-sm font-medium transition-all border hover:cursor-pointer ${
+      className={`flex flex-1 min-w-0 items-center justify-center flex-col sm:flex-row gap-0.5 sm:gap-2 py-1.5 sm:py-3 px-0.5 sm:px-2 rounded-b-2xl text-xs sm:text-sm font-medium transition-all border hover:cursor-pointer ${
         active
           ? "bg-[#E8F4DB] text-[#374D2B] border-[#A2C872] shadow-[0_6px_16px_rgba(142,179,83,0.2)]"
           : "text-gray-400 border-transparent hover:bg-gray-50"
@@ -21,16 +21,16 @@ const Tab = ({ label, Icon, active: activeArray, onClick: click, to }) => {
     >
       {!active && (
         <span
-          className={`w-6 h-6 grid place-items-center rounded-full flex-shrink-0 ${
+          className={`w-4 h-4 sm:w-6 sm:h-6 grid place-items-center rounded-full flex-shrink-0 ${
             active
               ? "bg-[#8BB353] text-white shadow"
               : "bg-gray-100 text-gray-400"
           }`}
         >
-          <Icon className="w-4 h-4" />
+          <Icon className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
         </span>
       )}
-      <span className="whitespace-nowrap text-[13px] leading-none text-center w-full">
+      <span className="text-[10px] sm:text-[13px] leading-tight text-center truncate max-w-full">
         {label}
       </span>
     </button>
@@ -101,15 +101,15 @@ const Wbsidebar = ({ children }) => {
   };
 
   return (
-    <div className="relative bg-white border border-gray-200 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.06)] px-6 pt-9 pb-6">
-      <div className="absolute left-1/2 -top-7 -translate-x-1/2">
-        <div className="flex items-center justify-center px-12 w-[450px] py-3 rounded-lg max-w-[430px] mt-5 h-[60px] border border-gray-200 bg-white shadow-none text-base font-semibold text-gray-800 leading-none">
+    <div className="relative bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.06)] px-3 sm:px-6 pt-8 sm:pt-9 pb-4 sm:pb-6">
+      <div className="absolute left-1/2 -top-6 sm:-top-7 -translate-x-1/2">
+        <div className="flex items-center justify-center px-4 sm:px-12 w-[280px] sm:w-[450px] py-2 sm:py-3 rounded-lg max-w-[95vw] sm:max-w-[430px] mt-4 sm:mt-5 h-[50px] sm:h-[60px] border border-gray-200 bg-white shadow-none text-sm sm:text-base font-semibold text-gray-800 leading-none">
           Web Solution
         </div>
       </div>
 
-      <div className="mb-6 w-full">
-        <div className="flex flex-nowrap items-center rounded-[20px] border px-2 border-gray-200 bg-white  shadow-sm gap-1">
+      <div className="mb-4 sm:mb-6 w-full">
+        <div className="flex flex-nowrap items-center rounded-[16px] sm:rounded-[20px] border px-1 sm:px-2 border-gray-200 bg-white shadow-sm gap-0.5 sm:gap-1">
           {tabs.map(({ label, Icon, to, active }) => (
             <Tab
               key={label}

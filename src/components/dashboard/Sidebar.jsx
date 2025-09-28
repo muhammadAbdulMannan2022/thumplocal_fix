@@ -17,12 +17,13 @@ const SidebarItem = ({ to, Icon, label, actives }) => {
   return (
     <Link
       to={to}
-      className={`flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition 
+      className={`flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition group relative
         ${
           active
             ? "bg-[#8BB353] text-white shadow"
             : "text-gray-700 hover:bg-gray-100"
-        }`}
+        }
+        lg:flex-row lg:justify-start justify-center flex-col lg:gap-3 gap-1`}
     >
       <span
         className={`w-8 h-8 grid place-items-center rounded ${
@@ -31,7 +32,8 @@ const SidebarItem = ({ to, Icon, label, actives }) => {
       >
         <Icon className="w-4 h-4" />
       </span>
-      {label}
+      <span className="lg:block hidden">{label}</span>
+      <span className="lg:hidden block text-xs leading-tight text-center">{label}</span>
     </Link>
   );
 };
@@ -87,8 +89,8 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-3">
-      <div className="flex items-center gap-2 px-2 py-3"></div>
+    <aside className="w-[80px] lg:w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-2 lg:p-3">
+      <div className="hidden lg:flex items-center gap-2 px-2 py-3"></div>
       <nav className="space-y-1">
         {links.map(({ to, label, Icon, actives }) => (
           <SidebarItem

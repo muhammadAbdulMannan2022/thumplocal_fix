@@ -51,38 +51,39 @@ export function LocationManager() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-800">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-3 sm:mb-4">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
           Location and Contact Details
         </h2>
         <button
           type="button"
           onClick={addLocation}
-          className="flex items-center gap-2 px-4 py-2 text-sm text-[#8BB353] hover:text-white hover:cursor-pointer bg-transparent border border-[#8BB353] rounded-md hover:bg-[#8BB353] transition-colors"
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 text-sm text-[#8BB353] hover:text-white hover:cursor-pointer bg-transparent border border-[#8BB353] rounded-md hover:bg-[#8BB353] transition-colors"
         >
           <Plus className="w-4 h-4" />
-          Add Address
+          <span className="hidden sm:inline">Add Address</span>
+          <span className="sm:hidden">Add</span>
         </button>
       </div>
 
       {locations.map((location, index) => (
         <div
           key={location.id}
-          className="relative border border-gray-200 backdrop-blur-xs rounded-lg p-4"
+          className="relative border border-gray-200 backdrop-blur-xs rounded-lg p-3 sm:p-4"
         >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-medium text-gray-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 mb-3 sm:mb-4">
+            <h3 className="text-base sm:text-lg font-medium text-gray-800">
               Location {index + 1}
             </h3>
             {locations.length > 1 && (
               <button
                 type="button"
                 onClick={() => removeLocation(location.id)}
-                className="flex items-center gap-2 px-3 py-1 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 border border-red-300 rounded-md transition-colors"
+                className="flex items-center gap-2 px-2 sm:px-3 py-1 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 border border-red-300 rounded-md transition-colors"
               >
                 <Trash2 className="w-4 h-4" />
-                Remove
+                <span className="hidden sm:inline">Remove</span>
               </button>
             )}
           </div>

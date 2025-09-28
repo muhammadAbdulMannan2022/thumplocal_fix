@@ -43,27 +43,27 @@ export default function ReviewLocation() {
   };
 
   return (
-    <div className="py-5">
-      <div className="bg-white/10 backdrop-blur-xs rounded-lg py-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">
+    <div className="py-3 sm:py-5">
+      <div className="bg-white/10 backdrop-blur-xs rounded-lg py-4 sm:py-6">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">
           Location and Contact Details
         </h2>
 
         {/* Address line 1 */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+        <div className="mb-3 sm:mb-4">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
             Address line 1
           </label>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 sm:justify-between">
             <input
               type="text"
               name="addressLine1"
               value={locationData.addressLine1}
               onChange={handleInputChange}
               placeholder="Street address, number, etc."
-              className="flex-1 px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="flex-1 px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
-            <button className="ml-4 text-[#8BB353] hover:text-[#8BB353]/90 hover:cursor-pointer font-medium flex items-center">
+            <button className="sm:ml-4 text-[#8BB353] hover:text-[#8BB353]/90 hover:cursor-pointer font-medium flex items-center justify-center py-2 sm:py-0">
               <span className="mr-1">+</span>
               Address
             </button>
@@ -71,9 +71,9 @@ export default function ReviewLocation() {
         </div>
 
         {/* City, State, ZIP row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               City
             </label>
             <input
@@ -82,12 +82,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.city}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               State/Province
             </label>
             <input
@@ -96,12 +96,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.stateProvince}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               ZIP/Postal code
             </label>
             <input
@@ -110,12 +110,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.zipPostalCode1}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               ZIP/Postal code
             </label>
             <input
@@ -124,15 +124,15 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.zipPostalCode2}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
         </div>
 
         {/* Country, Phone, Email, GPS row */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Country
             </label>
             <input
@@ -141,12 +141,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.country}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Phone Number
             </label>
             <input
@@ -155,12 +155,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.phoneNumber}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Email
             </label>
             <input
@@ -169,12 +169,12 @@ export default function ReviewLocation() {
               placeholder="Enter here..."
               value={locationData.email}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               GPS location
             </label>
             <div className="flex">
@@ -184,7 +184,7 @@ export default function ReviewLocation() {
                 placeholder="Enter here..."
                 value={locationData.gpsLocation}
                 onChange={handleInputChange}
-                className="flex-1 px-3 py-2 border border-gray-300 placeholder-gray-400 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
+                className="flex-1 px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 rounded-l-md focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
               />
               <button
                 type="button"
@@ -192,7 +192,7 @@ export default function ReviewLocation() {
                   handleAutoLocate();
                   setIsModalOpen(true);
                 }}
-                className="px-4 py-2 bg-[#8BB353] hover:bg-[#8BB353]/90 hover:cursor-pointer text-white rounded-r-md transition-colors"
+                className="px-3 sm:px-4 py-2.5 sm:py-2 bg-[#8BB353] hover:bg-[#8BB353]/90 hover:cursor-pointer text-white rounded-r-md transition-colors flex-shrink-0"
               >
                 <FaMapLocationDot />
               </button>

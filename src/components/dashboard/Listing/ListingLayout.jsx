@@ -1,12 +1,12 @@
-import React from "react";
+﻿import React from "react";
 import { Outlet } from "react-router";
 
 export default function ListingLayout() {
   return (
     <div className="w-full">
-      <div className="w-full items-center flex justify-center bg-white shadow rounded-lg py-3">
-        <h1 className="text-gray-800 text-lg font-bold">
-          information’s For listing service
+      <div className="w-full items-center flex justify-center bg-white shadow rounded-lg py-2 sm:py-3 px-3">
+        <h1 className="text-gray-800 text-sm sm:text-lg font-bold text-center">
+          information's For listing service
         </h1>
       </div>
       <div>

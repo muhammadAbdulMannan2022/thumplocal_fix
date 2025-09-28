@@ -100,13 +100,13 @@ export function PosterDesigner() {
   }, []);
 
   return (
-    <div className="flex h-[90vh] w-full">
+    <div className="flex flex-col lg:flex-row min-h-[90vh] w-full">
       {/* Left Panel - Form */}
-      <div className="w-1/3 bg-white p-4 border-r border-gray-200 overflow-y-auto">
-        <h2 className="text-lg font-semibold mb-3 text-gray-800">
+      <div className="w-full lg:w-1/3 bg-white p-3 sm:p-4 border-r-0 lg:border-r border-b lg:border-b-0 border-gray-200 overflow-y-auto">
+        <h2 className="text-base sm:text-lg font-semibold mb-3 text-gray-800">
           Poster Designer
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           <div>
             <label className="block text-xs text-gray-600 mb-1">
               Title of the Poster
@@ -116,7 +116,7 @@ export function PosterDesigner() {
               value={websiteName}
               onChange={(e) => setWebsiteName(e.target.value)}
               placeholder="Enter here"
-              className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
+              className="w-full px-2 py-1.5 sm:py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
             />
           </div>
           <div>
@@ -128,7 +128,7 @@ export function PosterDesigner() {
               value={posterType}
               onChange={(e) => setPosterType(e.target.value)}
               placeholder="Enter here"
-              className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
+              className="w-full px-2 py-1.5 sm:py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
             />
           </div>
           <div>
@@ -139,7 +139,7 @@ export function PosterDesigner() {
               value={targetAudience}
               onChange={(e) => setTargetAudience(e.target.value)}
               placeholder="Enter here"
-              className="w-full h-16 px-2 py-1 border border-gray-300 rounded text-sm resize-none focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
+              className="w-full h-12 sm:h-16 px-2 py-1.5 sm:py-1 border border-gray-300 rounded text-sm resize-none focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
             />
           </div>
           <div>
@@ -149,7 +149,7 @@ export function PosterDesigner() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => document.getElementById("logo-upload")?.click()}
-                className="px-3 py-1 border border-gray-300 rounded text-xs text-gray-700 hover:bg-gray-100"
+                className="px-2 sm:px-3 py-1.5 sm:py-1 border border-gray-300 rounded text-xs text-gray-700 hover:bg-gray-100 flex-shrink-0"
               >
                 Choose file
               </button>
@@ -174,7 +174,7 @@ export function PosterDesigner() {
               value={websiteLink}
               onChange={(e) => setWebsiteLink(e.target.value)}
               placeholder="Enter here"
-              className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
+              className="w-full px-2 py-1.5 sm:py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-gray-800"
             />
           </div>
           <div>
@@ -186,7 +186,7 @@ export function PosterDesigner() {
                 onClick={() =>
                   document.getElementById("content-upload")?.click()
                 }
-                className="px-3 py-1 border border-gray-300 rounded text-xs text-gray-700 hover:bg-gray-100"
+                className="px-2 sm:px-3 py-1.5 sm:py-1 border border-gray-300 rounded text-xs text-gray-700 hover:bg-gray-100 flex-shrink-0"
               >
                 Choose file
               </button>
@@ -202,9 +202,9 @@ export function PosterDesigner() {
               onChange={handleContentUpload}
               className="hidden"
             />
-            <div className="grid grid-cols-4 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1 sm:gap-2">
               {contentFiles.length === 0 ? (
-                <div className="col-span-4 text-xs text-gray-500">
+                <div className="col-span-full text-xs text-gray-500">
                   No attachments yet
                 </div>
               ) : (
@@ -216,7 +216,7 @@ export function PosterDesigner() {
                     <img
                       src={f.src}
                       alt={f.name}
-                      className="w-8 h-8 object-cover rounded"
+                      className="w-6 h-6 sm:w-8 sm:h-8 object-cover rounded flex-shrink-0"
                     />
                     <div className="text-xs text-gray-700 truncate">
                       {f.name}
@@ -246,8 +246,8 @@ export function PosterDesigner() {
               </label>
             </div>
           </div>
-          <div className="flex items-center justify-between pt-2">
-            <div className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+            <div className="flex flex-wrap items-center gap-1">
               <button className="p-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-100">
                 <FileText className="w-3 h-3" />
               </button>
@@ -290,7 +290,7 @@ export function PosterDesigner() {
             <p className="text-xs text-gray-500 mb-2">
               Prepare your company profile to improve performance.
             </p>
-            <button className="w-full px-3 py-1 bg-[#8BB353] text-white rounded text-sm hover:bg-[#7BA045] transition-colors">
+            <button className="w-full px-3 py-2 sm:py-1 bg-[#8BB353] text-white rounded text-sm hover:bg-[#7BA045] transition-colors">
               Start Processing
             </button>
           </div>
@@ -298,24 +298,24 @@ export function PosterDesigner() {
       </div>
 
       {/* Right Panel - Poster Gallery */}
-      <div className="flex-1 bg-gray-50/10 backdrop-blur-xs p-4">
-        <div className="bg-white rounded p-3 mb-3">
-          <h2 className="text-lg font-semibold text-gray-800">
+      <div className="flex-1 bg-gray-50/10 backdrop-blur-xs p-3 sm:p-4">
+        <div className="bg-white rounded p-2 sm:p-3 mb-3">
+          <h2 className="text-base sm:text-lg font-semibold text-gray-800">
             Building The Website With SEO
           </h2>
-          <p className="text-xs text-gray-600 mt-2">
+          <p className="text-xs text-gray-600 mt-1 sm:mt-2">
             Your complete website is ready! Developed with SEO best practices
             for strong visibility, speed, and user-friendly performance.
           </p>
         </div>
         {contentFiles.length === 0 ? (
-          <div className="h-full flex items-center justify-center text-gray-500 text-sm">
+          <div className="h-40 sm:h-60 lg:h-full flex items-center justify-center text-gray-500 text-sm">
             Upload images to preview here
           </div>
         ) : contentFiles.length === 1 ? (
-          <div className="flex items-center justify-center h-[80vh]">
+          <div className="flex items-center justify-center min-h-[300px] sm:min-h-[400px] lg:h-[60vh]">
             <div
-              className={`w-full max-h-[80vh] ${ratioToClass(
+              className={`w-full max-w-lg lg:max-w-none max-h-[60vh] ${ratioToClass(
                 currentRatio
               )} overflow-hidden relative group`}
             >
@@ -325,21 +325,21 @@ export function PosterDesigner() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                  <Download className="w-4 h-4" /> Download
+                <button className="px-2 sm:px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
+                  <Download className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Download</span>
                 </button>
-                <button className="px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                  <Share2 className="w-4 h-4" /> Post
+                <button className="px-2 sm:px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
+                  <Share2 className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Post</span>
                 </button>
               </div>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-[80vh] overflow-y-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-3 max-h-[400px] sm:max-h-[500px] lg:max-h-[60vh] overflow-y-auto">
             {contentFiles.map((f, i) => (
               <div
                 key={i}
-                className={`rounded overflow-hidden border bg-gray-50/10  p-1 relative group`}
+                className={`rounded overflow-hidden border bg-gray-50/10 p-1 relative group cursor-pointer`}
                 onClick={() => setSelectedIndex(i)}
               >
                 <div
@@ -353,11 +353,12 @@ export function PosterDesigner() {
                 </div>
                 <div className="absolute bottom-2 h-full w-full bg-gradient-to-b from-transparent via-transparent to-black opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="relative flex items-end justify-center h-full w-full">
-                    <button className="p-2 hover:cursor-pointer absolute top-4 right-2  bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                      <Download className="w-4 h-4" />
+                    <button className="p-1 sm:p-2 hover:cursor-pointer absolute top-2 sm:top-4 right-2 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
+                      <Download className="w-3 sm:w-4 h-3 sm:h-4" />
                     </button>
-                    <button className="px-3 hover:cursor-pointer py-1 mb-2 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                      Post on social media
+                    <button className="px-2 sm:px-3 hover:cursor-pointer py-1 mb-2 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
+                      <span className="hidden sm:inline">Post on social media</span>
+                      <span className="sm:hidden">Post</span>
                     </button>
                   </div>
                 </div>

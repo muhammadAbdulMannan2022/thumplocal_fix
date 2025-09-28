@@ -26,18 +26,18 @@ export function BusinessInfoForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto py-8 ">
+    <form onSubmit={handleSubmit} className="mx-auto py-4 sm:py-8 px-3 sm:px-0">
       {/* Basic Information Section */}
-      <div className="mb-10">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+      <div className="mb-6 sm:mb-10">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">
           Basic Information
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
           {/* Left 2 Columns (inputs) */}
-          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 Business Name *
               </label>
               <input
@@ -47,14 +47,14 @@ export function BusinessInfoForm() {
                 onChange={(e) =>
                   handleInputChange("businessName", e.target.value)
                 }
-                className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+                className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                    rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 Website URL
               </label>
               <input
@@ -64,13 +64,13 @@ export function BusinessInfoForm() {
                 onChange={(e) =>
                   handleInputChange("websiteUrl", e.target.value)
                 }
-                className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+                className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                    rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 Business Type (Location based)
               </label>
               <input
@@ -80,13 +80,13 @@ export function BusinessInfoForm() {
                 onChange={(e) =>
                   handleInputChange("businessType", e.target.value)
                 }
-                className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+                className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                    rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                 Business Category *
               </label>
               <input
@@ -96,7 +96,7 @@ export function BusinessInfoForm() {
                 onChange={(e) =>
                   handleInputChange("businessCategory", e.target.value)
                 }
-                className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+                className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                    rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] focus:border-transparent text-gray-800"
                 required
               />
@@ -105,7 +105,7 @@ export function BusinessInfoForm() {
 
           {/* Right Column (Textarea spanning height) */}
           <div className="flex flex-col">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Business Description *
             </label>
             <textarea
@@ -114,7 +114,7 @@ export function BusinessInfoForm() {
               onChange={(e) =>
                 handleInputChange("businessDescription", e.target.value)
               }
-              className="flex-1 min-h-[140px] px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="flex-1 min-h-[120px] sm:min-h-[140px] px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                  rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                  focus:border-transparent resize-none text-gray-800"
               required
@@ -127,10 +127,10 @@ export function BusinessInfoForm() {
       <LocationManager />
 
       {/* Submit */}
-      <div className="mt-8 flex justify-center">
+      <div className="mt-6 sm:mt-8 flex justify-center">
         <button
           type="submit"
-          className="bg-[#8BB353] hover:bg-[#7AA142] text-white px-8 py-3 rounded-lg transition-colors shadow-sm"
+          className="bg-[#8BB353] hover:bg-[#7AA142] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-colors shadow-sm text-sm sm:text-base"
         >
           Submit
         </button>
