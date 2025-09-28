@@ -309,7 +309,7 @@ export function PosterDesigner() {
           </p>
         </div>
         {contentFiles.length === 0 ? (
-          <div className="h-40 sm:h-60 lg:h-full flex items-center justify-center text-gray-500 text-sm">
+          <div className="h-auto flex items-center justify-center text-gray-500 text-sm">
             Upload images to preview here
           </div>
         ) : contentFiles.length === 1 ? (
@@ -326,16 +326,18 @@ export function PosterDesigner() {
               />
               <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button className="px-2 sm:px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                  <Download className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Download</span>
+                  <Download className="w-3 sm:w-4 h-3 sm:h-4" />{" "}
+                  <span className="hidden sm:inline">Download</span>
                 </button>
                 <button className="px-2 sm:px-3 py-1 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                  <Share2 className="w-3 sm:w-4 h-3 sm:h-4" /> <span className="hidden sm:inline">Post</span>
+                  <Share2 className="w-3 sm:w-4 h-3 sm:h-4" />{" "}
+                  <span className="hidden sm:inline">Post</span>
                 </button>
               </div>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-3 max-h-[400px] sm:max-h-[500px] lg:max-h-[60vh] overflow-y-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-2 sm:gap-3 max-h-[100%] lg:max-h-[90vh] overflow-y-auto">
             {contentFiles.map((f, i) => (
               <div
                 key={i}
@@ -357,7 +359,9 @@ export function PosterDesigner() {
                       <Download className="w-3 sm:w-4 h-3 sm:h-4" />
                     </button>
                     <button className="px-2 sm:px-3 hover:cursor-pointer py-1 mb-2 bg-[#8BB353] text-white rounded text-xs hover:bg-[#7BA045] flex items-center gap-1">
-                      <span className="hidden sm:inline">Post on social media</span>
+                      <span className="hidden sm:inline">
+                        Post on social media
+                      </span>
                       <span className="sm:hidden">Post</span>
                     </button>
                   </div>

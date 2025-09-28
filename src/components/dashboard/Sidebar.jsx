@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import {
   Home,
@@ -9,6 +9,7 @@ import {
   Megaphone,
   User,
   LogOut,
+  ArrowRight,
 } from "lucide-react";
 
 const SidebarItem = ({ to, Icon, label, actives }) => {
@@ -23,7 +24,7 @@ const SidebarItem = ({ to, Icon, label, actives }) => {
             ? "bg-[#8BB353] text-white shadow"
             : "text-gray-700 hover:bg-gray-100"
         }
-        lg:flex-row lg:justify-start justify-center flex-col lg:gap-3 gap-1`}
+        flex-row justify-start gap-3 `}
     >
       <span
         className={`w-8 h-8 grid place-items-center rounded ${
@@ -32,13 +33,30 @@ const SidebarItem = ({ to, Icon, label, actives }) => {
       >
         <Icon className="w-4 h-4" />
       </span>
-      <span className="lg:block hidden">{label}</span>
-      <span className="lg:hidden block text-xs leading-tight text-center">{label}</span>
+      <span className="block">{label}</span>
     </Link>
   );
 };
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Add/remove body class for sidebar state
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("sidebar-open");
+    } else {
+      document.body.classList.remove("sidebar-open");
+    }
+    return () => {
+      document.body.classList.remove("sidebar-open"); // Cleanup on unmount
+    };
+  }, [isOpen]);
+
   const links = [
     {
       to: "/dashboard/web-solution/seo",
@@ -89,20 +107,46 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-[80px] lg:w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-2 lg:p-3">
-      <div className="hidden lg:flex items-center gap-2 px-2 py-3"></div>
-      <nav className="space-y-1">
-        {links.map(({ to, label, Icon, actives }) => (
-          <SidebarItem
-            key={label}
-            to={to}
-            label={label}
-            Icon={Icon}
-            actives={actives}
-          />
-        ))}
-      </nav>
-    </aside>
+    <>
+      {/* Sidebar */}
+      <aside
+        className={` fixed md:static h-full md:h-[90vh] w-[260px] shrink-0 bg-white rounded-lg shadow-sm border border-gray-100 p-2 md:p-3 transition-transform duration-300 ease-in-out z-[9999]
+          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
+      >
+        <div className="hidden md:flex items-center gap-2 px-2 py-3"></div>
+        <nav className="space-y-1">
+          {links.map(({ to, label, Icon, actives }) => (
+            <SidebarItem
+              key={label}
+              to={to}
+              label={label}
+              Icon={Icon}
+              actives={actives}
+            />
+          ))}
+          {/* Toggle Button for Small Screens */}
+          <button
+            className="md:hidden z-[10000] px-2 bg-[#8BB353] text-white rounded-md h-10 absolute -right-5 top-4"
+            onClick={toggleSidebar}
+          >
+            <ArrowRight
+              className={`transition-transform duration-300 ${
+                isOpen ? "rotate-180" : "rotate-0"
+              }`}
+              size={24}
+            />
+          </button>
+        </nav>
+      </aside>
+
+      {/* Overlay for Small Screens */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-[9998]"
+          onClick={toggleSidebar}
+        ></div>
+      )}
+    </>
   );
 };
 
