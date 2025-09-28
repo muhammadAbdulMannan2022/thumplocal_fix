@@ -54,14 +54,14 @@ export function BusinessForm() {
   };
 
   const FileUploadButton = ({ field, label, accept = "*/*" }) => (
-    <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className="space-y-1 sm:space-y-2">
+      <label className="block text-xs sm:text-sm font-medium text-gray-700">{label}</label>
       <div className="">
         <label
-          className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 
+          className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-2 bg-gray-100 hover:bg-gray-200 
                          border border-gray-300 rounded-lg cursor-pointer transition-colors mb-1"
         >
-          <Upload className="w-4 h-4 text-gray-600" />
+          <Upload className="w-4 h-4 text-gray-600 flex-shrink-0" />
           <span className="text-sm text-gray-700">Choose file</span>
           <input
             type="file"
@@ -71,14 +71,14 @@ export function BusinessForm() {
           />
         </label>
         {fileNames[field] && (
-          <div className="flex items-center gap-2 px-3 py-1 w-fit bg-green-50 border border-green-200 rounded-lg">
-            <span className="text-sm text-green-700 truncate max-w-32">
+          <div className="flex items-center gap-2 px-3 py-1.5 sm:py-1 w-fit bg-green-50 border border-green-200 rounded-lg">
+            <span className="text-sm text-green-700 truncate max-w-24 sm:max-w-32">
               {fileNames[field]}
             </span>
             <button
               type="button"
               onClick={() => clearFile(field)}
-              className="text-green-600 hover:text-green-800"
+              className="text-green-600 hover:text-green-800 flex-shrink-0"
             >
               <X className="w-4 h-4" />
             </button>
@@ -121,7 +121,7 @@ export function BusinessForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Business hour (From)
             </label>
             <input
@@ -130,14 +130,14 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("businessHourFrom", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Business hour (To)
             </label>
             <input
@@ -146,14 +146,14 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("businessHourTo", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Payment methods name
             </label>
             <input
@@ -163,7 +163,7 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("paymentMethods", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
@@ -264,7 +264,7 @@ export function BusinessForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
               Menu or Booking or order URL
             </label>
             <input
@@ -274,7 +274,7 @@ export function BusinessForm() {
               onChange={(e) =>
                 handleInputChange("menuBookingUrl", e.target.value)
               }
-              className="w-full px-3 py-2 border border-gray-300 placeholder-gray-400 
+              className="w-full px-3 py-2.5 sm:py-2 border border-gray-300 placeholder-gray-400 
                        rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8BB353] 
                        focus:border-transparent text-gray-800"
             />
